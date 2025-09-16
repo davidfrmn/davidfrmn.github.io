@@ -9,16 +9,23 @@
     
     <h1>Phone Sensors</h1>
     <h2>Accelerometer data</h2>
-    <p id="accelerometerData"></p>
+    <p id="accelerometerX"></p>
+    <p id="accelerometerY"></p>
+    <p id="accelerometerZ"></p>
+
 
     <h2>GyroSensor data</h2>
-    <p id="gyroData"></p>
+    <p id="gyroX"></p>
+    <p id="gyroY"></p>
+    <p id="gyroZ"></p>
 
     <script>
         gyro = new Gyroscope({ frequency: 10 });
         gyro.start();
         gyro.addEventListener("reading", function() {
-            document.getElementById("gyroData").innerHTML = gyro.x + "\n" + gyro.y + "\n" + gyro.z;
+            document.getElementById("gyroX").innerHTML = gyro.x;
+            document.getElementById("gyroY").innerHTML = gyro.y;
+            document.getElementById("gyroZ").innerHTML = gyro.z;
         });
         gyro.addEventListener("error", function() {
         });
@@ -26,7 +33,9 @@
         accelerometer = new Accelerometer({ frequency: 10 });
         accelerometer.start();
         accelerometer.addEventListener("reading", function() {
-            document.getElementById("accelerometerData").innerHTML = accelerometer.x + "\n" + accelerometer.y + "\n" + accelerometer.z;
+            document.getElementById("accelerometerX").innerHTML = accelerometer.x;
+            document.getElementById("accelerometerY").innerHTML = accelerometer.y;
+            document.getElementById("accelerometerZ").innerHTML = accelerometer.z
         });
         accelerometer.addEventListener("error", function() {
         });
