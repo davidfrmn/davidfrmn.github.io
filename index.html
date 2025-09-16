@@ -11,12 +11,15 @@
         }
         .datax {
             background-color: rgb(137, 180, 250);
+            color: rgb(17, 17, 27);
         }
         .datay {
             background-color: rgb(243, 139, 168);
+            color: rgb(17, 17, 27);
         }
         .dataz {
             background-color: rgb(166, 227, 161);
+            color: rgb(17, 17, 27);
         }
     </style>
 </head>
@@ -29,15 +32,15 @@
     <p id="accelerometerZ" class="dataz""></p>
 
 
+
     <h2>GyroSensor data</h2>
     <p id="gyroX" class="datax"></p>
     <p id="gyroY" class="datay"></p>
     <p id="gyroZ" class="dataz"></p>
 
-    <h2>LightSensor data</h2>
-    <p id="light"></p>
-
-
+    <h2>Phone orientation</h2>
+    <p id="position"></p>
+    
     <script>
         gyro = new Gyroscope({ frequency: 10 });
         gyro.start();
@@ -45,6 +48,20 @@
             document.getElementById("gyroX").innerHTML = gyro.x;
             document.getElementById("gyroY").innerHTML = gyro.y;
             document.getElementById("gyroZ").innerHTML = gyro.z;
+
+            if (gyro.x>gyro.y && gyro.x>gyro.z){
+                document.getElementById("position").innerHTML = "Landscape";
+            }
+            else if (gyro.y>gyro.x && gyro.y>gyro.z){
+                document.getElementById("position").innerHTML = "Portrait";
+            }
+            else if (gyro.z>gyro.x && gyro.z>gyro.y){
+                document.getElementById("position").innerHTML = "Flat";
+            }
+            else{
+                document.getElementById("position").innerHTML = "Unknown";
+            }
+
         });
         gyro.addEventListener("error", function() {
         });
@@ -57,14 +74,6 @@
             document.getElementById("accelerometerZ").innerHTML = accelerometer.z
         });
         accelerometer.addEventListener("error", function() {
-        });
-
-        light = new LightSensor({ frequency: 10 });
-        light.start();
-        light.addEventListener("reading", function() {
-            document.getElementById("light").innerHTML = light.illuminance;
-        });
-        light.addEventListener("error", function() {
         });
 
     </script>
