@@ -15,7 +15,7 @@
     <p id="gyroData"></p>
 
     <script>
-        gyro = new GyroSensor();
+        gyro = new Gyro();
         gyro.start();
         gyro.addEventListener("reading", function() {
             document.getElementById("gyroData").innerHTML = gyro.x + " " + gyro.y + " " + gyro.z;
@@ -23,13 +23,14 @@
         gyro.addEventListener("error", function() {
         });
 
-        accelerometer = new AccelerometerSensor();
+        accelerometer = new Accelerometer();
         accelerometer.start();
         accelerometer.addEventListener("reading", function() {
             document.getElementById("accelerometerData").innerHTML = accelerometer.x + " " + accelerometer.y + " " + accelerometer.z;
         });
         accelerometer.addEventListener("error", function() {
         });
+
 
     </script>
 
