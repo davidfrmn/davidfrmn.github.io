@@ -15,7 +15,7 @@
     <p id="gyroData"></p>
 
     <script>
-        gyro = new Gyro({ frequency: 10 });
+        gyro = new Gyroscope({ frequency: 10 });
         gyro.start();
         gyro.addEventListener("reading", function() {
             document.getElementById("gyroData").innerHTML = gyro.x + " " + gyro.y + " " + gyro.z;
