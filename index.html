@@ -34,6 +34,10 @@
     <p id="gyroY" class="datay"></p>
     <p id="gyroZ" class="dataz"></p>
 
+    <h2>LightSensor data</h2>
+    <p id="light"></p>
+
+
     <script>
         gyro = new Gyroscope({ frequency: 10 });
         gyro.start();
@@ -55,6 +59,13 @@
         accelerometer.addEventListener("error", function() {
         });
 
+        light = new LightSensor({ frequency: 10 });
+        light.start();
+        light.addEventListener("reading", function() {
+            document.getElementById("light").innerHTML = light.illuminance;
+        });
+        light.addEventListener("error", function() {
+        });
 
     </script>
 
