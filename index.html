@@ -21,30 +21,51 @@
             background-color: rgb(166, 227, 161);
             color: rgb(17, 17, 27);
         }
-        #position {
+        #orientation {
             color: rgb(250, 179, 135);
+        }
+        
+        .cardholder {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .card{
+            background-color: rgb(49, 50, 68);
+            display: block;
         }
     </style>
 </head>
 <body>
     
     <h1>Phone Sensors</h1>
-    <h2>Accelerometer data</h2>
-    <p id="accelerometerX" class="datax"></p>
-    <p id="accelerometerY" class="datay""></p>
-    <p id="accelerometerZ" class="dataz""></p>
+    <div class="cardholder">
+        <div class="card">
+            <h2>Accelerometer data</h2>
+            <p id="accelerometerX" class="datax"></p>
+            <p id="accelerometerY" class="datay""></p>
+            <p id="accelerometerZ" class="dataz""></p>
+        </div>
+        <div class="card">
+            <h2>GyroSensor data</h2>
+            <p id="gyroX" class="datax"></p>
+            <p id="gyroY" class="datay"></p>
+            <p id="gyroZ" class="dataz"></p>
+        </div>
+        <div class="card">
+            <h2>Phone orientation</h2>
+            <p id="orientation"></p>
+        </div>
+    </div>
+    
 
-
-
-    <h2>GyroSensor data</h2>
-    <p id="gyroX" class="datax"></p>
-    <p id="gyroY" class="datay"></p>
-    <p id="gyroZ" class="dataz"></p>
-
-    <h2>Phone orientation</h2>
-    <p id="position"></p>
+   
     
     <script>
+        const orientation = document.getElementById("orientation");
         gyro = new Gyroscope({ frequency: 10 });
         gyro.start();
         gyro.addEventListener("reading", function() {
@@ -64,16 +85,16 @@
             document.getElementById("accelerometerZ").innerHTML = accelerometer.z;
 
             if (accelerometer.x>accelerometer.y && accelerometer.x>accelerometer.z){
-                document.getElementById("position").innerHTML = "Landscape";
+                orientation.innerHTML = "Landscape";
             }
             else if (accelerometer.y>accelerometer.x && accelerometer.y>accelerometer.z){
-                document.getElementById("position").innerHTML = "Portrait";
+                orientation.innerHTML = "Portrait";
             }
             else if (accelerometer.z>accelerometer.y && accelerometer.z>accelerometer.x){
-                document.getElementById("position").innerHTML = "Lying";
+                orientation.innerHTML = "Lying";
             }
             else{
-                document.getElementById("position").innerHTML = "Unknown";
+                orientation.innerHTML = "Unknown";
             }
         });
         accelerometer.addEventListener("error", function() {
