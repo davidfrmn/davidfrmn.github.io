@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Sensors</title>
+</head>
+<body>
+    
+    <h1>Phone Sensors</h1>
+    <h2>Accelerometer data</h2>
+    <p id="accelerometerData"></p>
+
+    <h2>GyroSensor data</h2>
+    <p id="gyroData"></p>
+
+    <script>
+        gyro = new GyroSensor();
+        gyro.start();
+        gyro.addEventListener("reading", function() {
+            document.getElementById("gyroData").innerHTML = gyro.x + " " + gyro.y + " " + gyro.z;
+        });
+        gyro.addEventListener("error", function() {
+        });
+
+        accelerometer = new AccelerometerSensor();
+        accelerometer.start();
+        accelerometer.addEventListener("reading", function() {
+            document.getElementById("accelerometerData").innerHTML = accelerometer.x + " " + accelerometer.y + " " + accelerometer.z;
+        });
+        accelerometer.addEventListener("error", function() {
+        });
+
+    </script>
+
+</body>
+</html>
