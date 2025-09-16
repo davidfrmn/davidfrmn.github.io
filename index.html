@@ -18,7 +18,7 @@
         gyro = new Gyroscope({ frequency: 10 });
         gyro.start();
         gyro.addEventListener("reading", function() {
-            document.getElementById("gyroData").innerHTML = gyro.x + " " + gyro.y + " " + gyro.z;
+            document.getElementById("gyroData").innerHTML = gyro.x + "\n" + gyro.y + "\n" + gyro.z;
         });
         gyro.addEventListener("error", function() {
         });
@@ -26,7 +26,7 @@
         accelerometer = new Accelerometer({ frequency: 10 });
         accelerometer.start();
         accelerometer.addEventListener("reading", function() {
-            document.getElementById("accelerometerData").innerHTML = accelerometer.x + " " + accelerometer.y + " " + accelerometer.z;
+            document.getElementById("accelerometerData").innerHTML = accelerometer.x + "\n" + accelerometer.y + "\n" + accelerometer.z;
         });
         accelerometer.addEventListener("error", function() {
         });
