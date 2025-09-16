@@ -21,7 +21,7 @@
             background-color: rgb(166, 227, 161);
             color: rgb(17, 17, 27);
         }
-        #orientation {
+        #position {
             color: rgb(250, 179, 135);
         }
     </style>
@@ -42,7 +42,7 @@
     <p id="gyroZ" class="dataz"></p>
 
     <h2>Phone orientation</h2>
-    <p id="orientation"></p>
+    <p id="position"></p>
     
     <script>
         gyro = new Gyroscope({ frequency: 10 });
@@ -51,19 +51,6 @@
             document.getElementById("gyroX").innerHTML = gyro.x;
             document.getElementById("gyroY").innerHTML = gyro.y;
             document.getElementById("gyroZ").innerHTML = gyro.z;
-
-            if (gyro.x>gyro.y && gyro.x>gyro.z){
-                document.getElementById("orientation").innerHTML = "Landscape";
-            }
-            else if (gyro.y>gyro.x && gyro.y>gyro.z){
-                document.getElementById("orientation").innerHTML = "Portrait";
-            }
-            else if (gyro.z>gyro.x && gyro.z>gyro.y){
-                document.getElementById("orientation").innerHTML = "Flat";
-            }
-            else{
-                document.getElementById("orientation").innerHTML = "Unknown";
-            }
 
         });
         gyro.addEventListener("error", function() {
@@ -74,7 +61,20 @@
         accelerometer.addEventListener("reading", function() {
             document.getElementById("accelerometerX").innerHTML = accelerometer.x;
             document.getElementById("accelerometerY").innerHTML = accelerometer.y;
-            document.getElementById("accelerometerZ").innerHTML = accelerometer.z
+            document.getElementById("accelerometerZ").innerHTML = accelerometer.z;
+
+            if (accelerometer.x>accelerometer.y && accelerometer.x>accelerometer.z){
+                document.getElementById("position").innerHTML = "Landscape";
+            }
+            else if (accelerometer.y>accelerometer.x && accelerometer.y>accelerometer.z){
+                document.getElementById("position").innerHTML = "Portrait";
+            }
+            else if (accelerometer.z>accelerometer.y && accelerometer.z>accelerometer.x){
+                document.getElementById("position").innerHTML = "Lying";
+            }
+            else{
+                document.getElementById("position").innerHTML = "Unknown";
+            }
         });
         accelerometer.addEventListener("error", function() {
         });
@@ -83,4 +83,3 @@
 
 </body>
 </html>
-
