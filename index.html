@@ -4,20 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Sensors</title>
+    <style>
+        body {
+            background-color: rgb(17, 17, 27);
+            color: rgb(205, 214, 244);
+        }
+        .datax {
+            background-color: rgb(137, 180, 250);
+        }
+        .datay {
+            background-color: rgb(243, 139, 168);
+        }
+        .dataz {
+            background-color: (166, 227, 161);
+        }
+    </style>
 </head>
 <body>
     
     <h1>Phone Sensors</h1>
     <h2>Accelerometer data</h2>
-    <p id="accelerometerX"></p>
-    <p id="accelerometerY"></p>
-    <p id="accelerometerZ"></p>
+    <p id="accelerometerX" class="datax"></p>
+    <p id="accelerometerY" class="datay""></p>
+    <p id="accelerometerZ" class="dataz""></p>
 
 
     <h2>GyroSensor data</h2>
-    <p id="gyroX"></p>
-    <p id="gyroY"></p>
-    <p id="gyroZ"></p>
+    <p id="gyroX" class="datax"></p>
+    <p id="gyroY" class="datay"></p>
+    <p id="gyroZ" class="dataz"></p>
 
     <script>
         gyro = new Gyroscope({ frequency: 10 });
